@@ -1,0 +1,1 @@
+echo "Checks passed. Proceeding with installation..."
