@@ -1,0 +1,7 @@
+---
+apt_packages:
+  - seclists
+  - bloodhound
+
+pipx_packages:
+  - arsenal-cli

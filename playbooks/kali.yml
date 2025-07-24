@@ -1,15 +1,22 @@
 - name: Playbook for Basic Linux Security Measurements
-  hosts: kali-linux
+  hosts: kali
   become: yes
   pre_tasks:
-    - name: Update system packages
-      apt:
+    - name: Update apt cache and dist‑upgrade (non‑interactive)
+      ansible.builtin.apt:
         update_cache: yes
+        cache_valid_time: "3600"
         upgrade: dist
-  tasks:
+        force_apt_get: yes
+        autoremove: yes
+        autoclean: yes
+      environment:
+        DEBIAN_FRONTEND: noninteractive
+
     - name: Perform full system upgrade
       apt:
         upgrade: full
         update_cache: yes
   roles:
     - role: apt
+    - role: pipx
