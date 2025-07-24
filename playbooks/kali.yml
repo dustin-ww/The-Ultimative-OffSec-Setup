@@ -1,0 +1,15 @@
+- name: Playbook for Basic Linux Security Measurements
+  hosts: kali-linux
+  become: yes
+  pre_tasks:
+    - name: Update system packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+  tasks:
+    - name: Perform full system upgrade
+      apt:
+        upgrade: full
+        update_cache: yes
+  roles:
+    - role: apt

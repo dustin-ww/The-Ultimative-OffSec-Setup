@@ -1,0 +1,13 @@
+---
+- name: Ensure apt cache is up to date
+  ansible.builtin.apt:
+    update_cache: yes
+  become: yes
+
+- name: Install each APT package individually
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ apt_packages }}"
+  become: yes
+
